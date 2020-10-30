@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map'; // just here so that the tests (using deprecated logic) succeed...
 
+import { Album } from './album';
+
 
 @Injectable()
 export class ProductService {
@@ -12,10 +14,8 @@ export class ProductService {
 
   constructor( private _http: Http ) { }
 
-  //Observable<Response>
-  // cannot define return type yet due to predefined tests...
-  getAlbum( id: number ) {
-    return this._http.get( this._albumUrl ).pipe( map( response => response.json() ));
+  getAlbum( id: number ): Observable<Album> {
+    return this._http.get( this._albumUrl ).pipe( map( response => <Album> response.json() ));
   }
 
 }
