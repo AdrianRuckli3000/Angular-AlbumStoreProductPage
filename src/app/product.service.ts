@@ -4,6 +4,8 @@ import { Http, Response} from '@angular/http';
 @Injectable()
 export class ProductService {
 
-  constructor(private http : Http) { }
+  _albumUrl: String = '.../assets/album.json';
+
+  constructor(private http: Http) { }
 
 }
